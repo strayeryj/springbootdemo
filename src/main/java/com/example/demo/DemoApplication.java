@@ -25,7 +25,7 @@ public class DemoApplication {
 
 		System.out.println("jarTest");
 		SpringApplication app = new SpringApplication(DemoApplication.class);
-		//app.setShowBanner(false);//已过时，没看见替代的方法
+		//app.setShowBanner(false);//已过时，没看见替代的方法dd
 		app.run(args);
 	}
 
