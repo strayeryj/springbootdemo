@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--&lt;!&ndash; 事务管理器 &ndash;&gt;-->
+    <!--<bean id="transactionManager"-->
+          <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 事务注解驱动，标注@Transactional的类和方法将具有事务性 &ndash;&gt;-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager" />-->
+
+    <settings>
+        <!-- 数据库下划线命名自动映射实体类属性驼峰命名，默认值false -->
+        <!--<setting name="mapUnderscoreToCamelCase" value="true" />-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--<typeAliases>-->
+        <!--<package name="com.eugene.student.repository.dto" />-->
+    <!--</typeAliases>-->
+
+    <!--<environments default="development">-->
+        <!--<environment id="development">-->
+            <!--<transactionManager type="JDBC"/>-->
+            <!--<dataSource type="UNPOOLED">-->
+                <!--<property name="driver" value="org.mariadb.jdbc.Driver"/>-->
+                <!--<property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>-->
+                <!--<property name="username" value="root"/>-->
+                <!--<property name="password" value="root"/>-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+    <!--<mappers>-->
+        <!--<package name="mybatis.mappers" />-->
+        <!--&lt;!&ndash;<mapper class="org.eugene.mybatis.student.ch01.repository.CountryMapper" />&ndash;&gt;-->
+        <!--<mapper resource="mybatis/mapper/CountryMapper.xml" />-->
+        <!--<mapper resource="mybatis/mapper/IUserMapper.xml" />-->
+    <!--</mappers>-->
+</configuration>

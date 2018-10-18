@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.dto.generator.GenOutMapper">
+
+  <insert id="insert" parameterType="com.example.demo.repository.dto.generator.powerStation.GenOut">
+    insert into gen_out (method, p_plant_code, station_code, 
+      line_code, data_name, data_time, 
+      min_value, min_time, max_value, 
+      max_time, min_value_f, min_time_f, 
+      max_value_f, max_time_f, min_value_p, 
+      min_time_p, max_value_p, max_time_p, 
+      min_value_g, min_time_g, max_value_g, 
+      max_time_g)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.method,jdbcType=VARCHAR}, #{item.pPlantCode,jdbcType=VARCHAR}, #{item.stationCode,jdbcType=VARCHAR},
+      #{item.lineCode,jdbcType=VARCHAR}, #{item.dataName,jdbcType=VARCHAR}, #{item.dataTime,jdbcType=VARCHAR},
+      #{item.minValue,jdbcType=VARCHAR}, #{item.minTime,jdbcType=VARCHAR}, #{item.maxValue,jdbcType=VARCHAR},
+      #{item.maxTime,jdbcType=VARCHAR}, #{item.minValueF,jdbcType=VARCHAR}, #{item.minTimeF,jdbcType=VARCHAR},
+      #{item.maxValueF,jdbcType=VARCHAR}, #{item.maxTimeF,jdbcType=VARCHAR}, #{item.minValueP,jdbcType=VARCHAR},
+      #{item.minTimeP,jdbcType=VARCHAR}, #{item.maxValueP,jdbcType=VARCHAR}, #{item.maxTimeP,jdbcType=VARCHAR},
+      #{item.minValueG,jdbcType=VARCHAR}, #{item.minTimeG,jdbcType=VARCHAR}, #{item.maxValueG,jdbcType=VARCHAR},
+      #{item.maxTimeG,jdbcType=VARCHAR})
+    </foreach>
+
+  </insert>
+
+</mapper>

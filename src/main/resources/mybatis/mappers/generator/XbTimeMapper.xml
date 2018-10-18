@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.repository.dto.generator.XbTimeMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.repository.dto.generator.powerStation.XbTime" >
+    <result column="method" property="method" jdbcType="VARCHAR" />
+    <result column="p_plant_code" property="pPlantCode" jdbcType="VARCHAR" />
+    <result column="station_code" property="stationCode" jdbcType="VARCHAR" />
+    <result column="line_code" property="lineCode" jdbcType="VARCHAR" />
+    <result column="data_name" property="dataName" jdbcType="VARCHAR" />
+    <result column="data_time" property="dataTime" jdbcType="VARCHAR" />
+    <result column="xb_time_j" property="xbTimeJ" jdbcType="VARCHAR" />
+    <result column="xb_time_f" property="xbTimeF" jdbcType="VARCHAR" />
+    <result column="xb_time_p" property="xbTimeP" jdbcType="VARCHAR" />
+    <result column="xb_time_g" property="xbTimeG" jdbcType="VARCHAR" />
+    <result column="xb_time_z" property="xbTimeZ" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.repository.dto.generator.powerStation.XbTime" >
+    insert into xb_time (method, p_plant_code, station_code, 
+      line_code, data_name, data_time, 
+      xb_time_j, xb_time_f, xb_time_p, 
+      xb_time_g, xb_time_z)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.method,jdbcType=VARCHAR}, #{item.pPlantCode,jdbcType=VARCHAR}, #{item.stationCode,jdbcType=VARCHAR},
+      #{item.lineCode,jdbcType=VARCHAR}, #{item.dataName,jdbcType=VARCHAR}, #{item.dataTime,jdbcType=VARCHAR},
+      #{item.xbTimeJ,jdbcType=VARCHAR}, #{item.xbTimeF,jdbcType=VARCHAR}, #{item.xbTimeP,jdbcType=VARCHAR},
+      #{item.xbTimeG,jdbcType=VARCHAR}, #{item.xbTimeZ,jdbcType=VARCHAR})
+    </foreach>
+
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.repository.dto.generator.powerStation.XbTime" >
+    insert into xb_time
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="pPlantCode != null" >
+        p_plant_code,
+      </if>
+      <if test="stationCode != null" >
+        station_code,
+      </if>
+      <if test="lineCode != null" >
+        line_code,
+      </if>
+      <if test="dataName != null" >
+        data_name,
+      </if>
+      <if test="dataTime != null" >
+        data_time,
+      </if>
+      <if test="xbTimeJ != null" >
+        xb_time_j,
+      </if>
+      <if test="xbTimeF != null" >
+        xb_time_f,
+      </if>
+      <if test="xbTimeP != null" >
+        xb_time_p,
+      </if>
+      <if test="xbTimeG != null" >
+        xb_time_g,
+      </if>
+      <if test="xbTimeZ != null" >
+        xb_time_z,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="pPlantCode != null" >
+        #{pPlantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stationCode != null" >
+        #{stationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lineCode != null" >
+        #{lineCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dataName != null" >
+        #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataTime != null" >
+        #{dataTime,jdbcType=VARCHAR},
+      </if>
+      <if test="xbTimeJ != null" >
+        #{xbTimeJ,jdbcType=VARCHAR},
+      </if>
+      <if test="xbTimeF != null" >
+        #{xbTimeF,jdbcType=VARCHAR},
+      </if>
+      <if test="xbTimeP != null" >
+        #{xbTimeP,jdbcType=VARCHAR},
+      </if>
+      <if test="xbTimeG != null" >
+        #{xbTimeG,jdbcType=VARCHAR},
+      </if>
+      <if test="xbTimeZ != null" >
+        #{xbTimeZ,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

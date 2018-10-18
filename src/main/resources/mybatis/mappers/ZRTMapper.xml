@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.repository.IZRTMapper">
+
+    <insert id="insertDeviceGroup" >
+        insert INTO device_group  (id, route) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.route})
+        </foreach>
+    </insert>
+
+    <select id="selectDeviceGroup" resultType="DeviceGroupDto">
+        SELECT id, route FROM device_group
+    </select>
+
+    <insert id="insertDeviceInfo" >
+        insert INTO device_health (id, device_group_id, hpi, time, name, state, similarSet)  VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.pId}, #{item.hpi}, #{item.time}, #{item.name}, #{item.state}, #{item.similarSet})
+        </foreach>
+    </insert>
+
+    <select id="selectDevice" resultType="String">
+       select concat(g.route, '.', h.name) route from device_group g join device_health h on g.id = h.device_group_id
+    </select>
+
+    <insert id="insertDeviceHealthHistory" >
+        insert INTO device_history_health  (route, time, value) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.route}, #{item.time}, #{item.value})
+        </foreach>
+    </insert>
+
+    <select id="selectDeviceHealth" resultType="DeviceHistoryHealthDto">
+        SELECT * FROM device_history_health limit 0,10;
+    </select>
+
+</mapper>

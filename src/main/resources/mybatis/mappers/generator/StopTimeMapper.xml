@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.dto.generator.StopTimeMapper">
+  <insert id="insert" parameterType="StopTime">
+      insert into stop_time (method, p_plant_code, station_code,
+          line_code, data_name, data_time,
+          stop_time_j, stop_time_f, stop_time_p,
+          stop_time_g, stop_time_z)
+      values
+      <foreach collection="list" item="item" separator=",">
+          (#{item.method,jdbcType=VARCHAR}, #{item.pPlantCode,jdbcType=VARCHAR}, #{item.stationCode,jdbcType=VARCHAR},
+          #{item.lineCode,jdbcType=VARCHAR}, #{item.dataName,jdbcType=VARCHAR}, #{item.dataTime,jdbcType=VARCHAR},
+          #{item.stopTimeJ,jdbcType=VARCHAR}, #{item.stopTimeF,jdbcType=VARCHAR}, #{item.stopTimeP,jdbcType=VARCHAR},
+          #{item.stopTimeG,jdbcType=VARCHAR}, #{item.stopTimeZ,jdbcType=VARCHAR})
+      </foreach>
+
+  </insert>
+
+</mapper>

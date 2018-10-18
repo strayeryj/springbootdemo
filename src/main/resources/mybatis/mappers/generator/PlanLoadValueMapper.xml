@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.repository.dto.generator.PlanLoadValueMapper" >
+  <insert id="insert" parameterType="PlanLoadValue" >
+    insert into plan_load_value (method, node_id, data_name, data_time,
+      plan_load, plan_value)
+    values (#{nodeId,jdbcType=VARCHAR}, #{dataName,jdbcType=VARCHAR}, #{dataTime,jdbcType=VARCHAR}, 
+      #{planLoad,jdbcType=VARCHAR}, #{planValue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertBatch" parameterType="PlanLoadValue" >
+    insert into plan_load_value (method, node_id, data_name, data_time, plan_load, plan_value)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.method,jdbcType=VARCHAR}, #{item.nodeId,jdbcType=VARCHAR}, #{item.dataName,jdbcType=VARCHAR},
+      #{item.dataTime,jdbcType=VARCHAR}, #{item.planLoad,jdbcType=VARCHAR}, #{item.planValue,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

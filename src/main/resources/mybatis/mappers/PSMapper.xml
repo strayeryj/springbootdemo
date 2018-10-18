@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.repository.IPSMapper">
+    <insert id="hourCommon" >
+        insert INTO hour_common (method, code, name, time, type, value) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.method}, #{item.code}, #{item.name}, #{item.time}, #{item.type}, #{item.value})
+        </foreach>
+    </insert>
+    <insert id="dayCommon" >
+        insert INTO day_common
+        (method, code, name, time, type, value, vj, vp, vg, vf, m_value, y_value)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.method}, #{item.code}, #{item.name}, #{item.time}, #{item.type}, #{item.value},
+            #{item.vj}, #{item.vp}, #{item.vg}, #{item.vf}, #{item.mValue}, #{item.yValue})
+        </foreach>
+    </insert>
+
+    <insert id="stationInfo" >
+        insert INTO station_info  (method, station_code, name) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.method}, #{item.stationCode}, #{item.stationName})
+        </foreach>
+    </insert>
+    <select id="selectStationInfo" resultType="StationInfoDto">
+        SELECT station_code stationCode, name as stationName FROM station_info where station_code != "";
+    </select>
+</mapper>

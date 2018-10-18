@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.repository.IWaterMapper">
+
+    <insert id="reservoidCpcHourCommon" >
+        insert INTO reservoid_cpc_hour_common (id, type, point_id, point_name, time, value)  VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.type}, #{item.pointId}, #{item.pointName}, #{item.time}, #{item.value})
+        </foreach>
+    </insert>
+    <insert id="reservoidCpcDayCommon" >
+        insert INTO reservoid_cpc_day_common (id, type, point_id, point_name, time, value)  VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.type}, #{item.pointId}, #{item.pointName}, #{item.time}, #{item.value})
+        </foreach>
+    </insert>
+    <insert id="reservoidCpcMonthCommon" >
+        insert INTO reservoid_cpc_month_common (id, type, point_id, point_name, time, value)  VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.type}, #{item.pointId}, #{item.pointName}, #{item.time}, #{item.value})
+        </foreach>
+    </insert>
+    <insert id="reservoidCpcYearCommon" >
+        insert INTO reservoid_cpc_year_common (id, type, point_id, point_name, time, value)  VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.type}, #{item.pointId}, #{item.pointName}, #{item.time}, #{item.value})
+        </foreach>
+    </insert>
+
+
+    <insert id="reservoidCpcCommon2" >
+        insert INTO reservoid_cpc_common2 (id, type, point_id, point_name, x, y1, y2)  VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.type}, #{item.pointId}, #{item.pointName}, #{item.x}, #{item.y1}, #{item.y2})
+        </foreach>
+    </insert>
+
+</mapper>

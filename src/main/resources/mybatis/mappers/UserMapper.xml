@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.repository.IUserMapper">
+    <select id="selectUserById" resultType="UserDto">
+        SELECT * FROM user u
+        WHERE u.id = #{id}
+    </select>
+    <select id="selectUsers" resultType="UserDto">
+        SELECT * FROM user u
+    </select>
+
+    <!--<update id="updateUserById" parameterType="UserDto" >-->
+        <!--UPDATE USER u  set u.name = #{name} where u.id = #{id}-->
+    <!--</update>-->
+    <update id="updateUserById">
+      UPDATE USER u  set u.name = #{arg0} where u.id = #{arg1}
+    </update>
+
+    <insert id="insertUser" parameterType="UserDto">
+        insert into user (id, name, age) value (#{id}, #{name}, #{age})
+    </insert>
+
+    <delete id="deleteUser">
+        delete from user where id="aaa";
+    </delete>
+
+    <!-- *************************************************************************** -->
+    <insert id="insertBatch" >
+      insert INTO USER  (id,name,age) VALUES
+      <foreach collection="list" item="user" separator=",">
+          (#{user.id}, #{user.name}, #{user.age})
+      </foreach>
+    </insert>
+</mapper>
